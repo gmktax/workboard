@@ -496,7 +496,7 @@ const CONFIG = {
   pinHash: 'd7837ec786cd9e72ed8e0c3fae769aa7f84fb5ba57f6db930d1ececa875235e8',
   // TEAM SYNC — paste the code generated in Settings → "Team sync setup" here (one time, by the admin).
   // It is your GitHub key locked with the PIN: useless without the PIN, and invisible to GitHub's key scanners.
-    teamKey: 'WB1.eyJzIjoiaGR0TkNGTFVKUTFQUExmSW5MSUp3Zz09IiwiaSI6IjY3RlNzbUJXVnBUR3V1ZEwiLCJjIjoic2QxQ2pyODk5NVhlQUpXVHEyVXBuMUswc3p4VjkxMGRzWVRCVm85anNrYlM1UTFSN1VOSkIranE1UFZqUjFlTVhZZFNMRHlERG9UclZNNlh0KzNucHVXUCtnWkZBQUlVMEpuRi93Z3BWV0IxbDlSNGRaSmJuNWlSaGFwdXNDZGJhVXJNV2hGdkVlZlVFVHV0MzFUMkJCUjY2UWdVV3o0eGFPT3ZJZFFTcEtyWnF2N0pBVmt3djM0OStYS1I3dnBYVUZDVlp5UmpFbk5CUE9RYjNLMkRqTTZrYmhkV0JKRWd6U3I2S3ZJSC9ZcnVYc2JxVTZteGhDckhuU2E5WWpJeUNBPT0ifQ==',
+  teamKey: 'WB1.eyJzIjoiMXJsUEgrcnpCcDZucWJuN2cvQTFtdz09IiwiaSI6Im9qN1l4OUgzMUo1Ym9oV28iLCJjIjoiV0c2N200NHR1M0ZIajFUYlB1dUFBVkxvdEF2N3JsMi82L3BpcUl2K1cvMFpTZStiY0c5eksvQ1NqRm80R0FiR2JXY3dCcisyWEFKazBXL0hMWDdsVlBlMXNxRzU2bzhyc1BxR2hPRmZ3dG1HVXVCM3Y2SHBGOGNqK1dxcXZsVW5ER1E4Z2xHNWxEUWZEaUsrWVpQeEZ6QXJyemg0ZmkzZko3d3RrY2JGVzVPTTFYVFRQekRDWVRKTDVpZlU5SjUvbnV2TmNhNWFTa3BMU0tPSlJGNjZSa0djMmdjUXVpa2MyVWQwbVRpUGxtaXJRMVBzcFlnYzU5UC9qNGVsN2N1R1FRPT0ifQ==',
   maxAttempts: 5,          // wrong PINs before a timed lock-out
   autoLockMinutes: 15,     // lock automatically after inactivity
   // Data lives in a SEPARATE PRIVATE repo (default name "workboard-data").
@@ -724,6 +724,8 @@ async function ghPut(payload, sha, c = gh()) {
   const r = await fetch(url, { method: 'PUT', headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${c.token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
   if (r.status === 409) return { conflict: true };
   if (r.status === 422) { const j = await r.json().catch(() => ({})); if (/sha|match|conflict/i.test(j.message || '')) return { conflict: true }; throw new Error(`GitHub 422: ${j.message}`); }
+  if (r.status === 404 || r.status === 403) throw new Error('GitHub blocked the save — the access key needs "Contents: Read and write" on the workboard-data repo (GitHub → Settings → Developer settings → Fine-grained tokens → Edit)');
+  if (r.status === 401) throw new Error('The access key is invalid or was deleted — create a new one and redo Team sync setup');
   if (!r.ok) { const j = await r.json().catch(() => ({})); throw new Error(`GitHub ${r.status}: ${j.message || r.statusText}`); }
   return { ok: true };
 }
@@ -1301,7 +1303,16 @@ async function genTeamKey() {
   st.className = 'conn wait'; st.innerHTML = ic('refresh', 15) + ' Checking access…';
   try {
     if (!conn.owner) throw new Error('Enter your GitHub username');
-    const r = await ghGet(gh({ ...conn, token }));
+    const c = gh({ ...conn, token }); validConn(c);
+    const repo = await fetch(`https://api.github.com/repos/${c.owner}/${c.repo}`, { headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${token}` }, cache: 'no-store' });
+    if (repo.status === 401) throw new Error('GitHub did not accept this access key — check it was copied fully');
+    if (!repo.ok) throw new Error(`Repo "${c.owner}/${c.repo}" not found, or the key was not given access to it`);
+    const rj = await repo.json(); if (rj.size === 0 && !rj.default_branch) throw new Error('The repo is empty — add a README file to it first');
+    const r = await ghGet(c);
+    st.innerHTML = ic('refresh', 15) + ' Testing save permission…';
+    const base = r.data ? normalize(r.data) : clone(data);
+    if (!r.data) stamp(base);
+    await ghPut(base, r.sha, c);   // proves the key can WRITE, not just read
     const code = await lockTeamKey(session.pin, { t: token, ...conn });
     localStorage.setItem(K.teamKey, code);
     session.token = token; session.conn = conn;
