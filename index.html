@@ -162,60 +162,59 @@ input,select,textarea{font:inherit;color:inherit}
 .ph-search input:focus{background:#fff;border-color:var(--brand-2);box-shadow:0 0 0 3px rgba(47,91,234,.12)}
 .ph-search .ic{position:absolute;left:11px;top:9px;color:var(--faint)}
 .ph-actions{display:flex;gap:8px}
-.tree-scroll{overflow-x:auto;padding:26px 18px 34px;background:radial-gradient(circle,#dde3ee 1px,transparent 1.2px) 0 0/22px 22px,#fbfcfe}
-.tree{width:max-content;min-width:100%;display:flex;flex-direction:column;align-items:center}
-.node-root{position:relative;display:flex;justify-content:center;padding-bottom:26px}
+.tree-scroll{padding:22px 20px 26px;background:radial-gradient(circle,#dde3ee 1px,transparent 1.2px) 0 0/22px 22px,#fbfcfe}
+.tree{display:flex;flex-direction:column;align-items:stretch}
+.node-root{position:relative;display:flex;justify-content:center;padding-bottom:22px}
 .node-root.solo{padding-bottom:0}
-.node-root::after{content:"";position:absolute;left:50%;bottom:0;height:26px;border-left:2px solid var(--line2)}
+.node-root::after{content:"";position:absolute;left:50%;bottom:0;height:22px;border-left:2px solid var(--line2)}
 .node-root.solo::after{display:none}
 .root-card{display:flex;align-items:center;gap:12px;padding:12px 20px 12px 12px;border-radius:15px;color:var(--on,#fff);background:var(--g);box-shadow:0 10px 24px var(--gs);border:1px solid rgba(255,255,255,.7)}
 .root-card .ri{width:38px;height:38px;border-radius:10px;background:var(--gb);color:#fff;display:grid;place-items:center}
 .root-card .rt{font-weight:700;font-size:15px}
 .root-card .rs{font-size:12px;color:var(--mute);font-weight:500}
-.branches{display:flex;align-items:flex-start}
-.branch{position:relative;display:flex;flex-direction:column;align-items:center;padding:24px 9px 0;transition:opacity .2s}
-.branch::before{content:"";position:absolute;top:0;left:50%;height:24px;border-left:2px solid var(--line2)}
-.branch::after{content:"";position:absolute;top:0;left:0;right:0;border-top:2px solid var(--line2)}
-.branch:first-child::after{left:50%}
-.branch:last-child::after{right:50%}
-.branch:only-child::after{display:none}
-.branch.dim{opacity:.28}
-.m-card{position:relative;width:200px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 14px 0;text-align:center;box-shadow:var(--shadow);cursor:pointer;transition:box-shadow .15s,border-color .15s,transform .15s;overflow:hidden}
-.m-card::before{content:"";position:absolute;left:0;right:0;top:0;height:54px;background:linear-gradient(180deg,var(--sbg),transparent);pointer-events:none}
-.m-card:hover{box-shadow:var(--shadow-md);border-color:var(--line2);transform:translateY(-2px)}
-.m-card.open{border-color:#b9c7f3;box-shadow:0 0 0 3px rgba(47,91,234,.1),var(--shadow-md)}
-.m-card .bar{position:absolute;left:0;right:0;top:0;height:4px;background:var(--sgrad)}
-.s-available{--sc:var(--ok-c);--sbg:#e9f8ef;--sgrad:linear-gradient(90deg,#16a34a,#4ade80)}
-.s-limited{--sc:var(--warn-c);--sbg:#fff4e2;--sgrad:linear-gradient(90deg,#ea8a00,#fbbf24)}
-.s-occupied{--sc:var(--bad-c);--sbg:#fdeeee;--sgrad:linear-gradient(90deg,#dc2626,#fb7185)}
-.m-edit{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--muted);background:rgba(255,255,255,.8);opacity:0;transition:all .12s;z-index:2}
-.m-card:hover .m-edit,.m-card.open .m-edit{opacity:1}
+.branches{position:relative;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;align-items:start;padding-top:20px;border-top:2px solid var(--line2);border-radius:14px 14px 0 0}
+.branches::before,.branches::after{content:"";position:absolute;top:-2px;width:2px;height:12px;background:var(--line2)}
+.branches::before{left:0}.branches::after{right:0}
+.mc{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s,border-color .15s,opacity .2s}
+.mc:hover{box-shadow:var(--shadow-md);border-color:var(--line2)}
+.mc.dim{opacity:.3}
+.mc .bar{position:absolute;left:0;right:0;top:0;height:4px;background:var(--sgrad)}
+.mc-top{display:flex;align-items:center;gap:11px;padding:16px 12px 10px 14px;background:linear-gradient(180deg,var(--sbg),#fff);cursor:pointer}
+.mc-top .avatar{width:42px;height:42px;font-size:14px;margin:0;flex:none}
+.mc-who{flex:1;min-width:0}
+.m-name{font-weight:700;font-size:14.5px;letter-spacing:-.005em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.m-status{font-size:11.5px;font-weight:700;color:var(--st)}
+.s-available{--sc:var(--ok-c);--sbg:#edf9f2;--sgrad:linear-gradient(90deg,#16a34a,#4ade80)}
+.s-limited{--sc:var(--warn-c);--sbg:#fff6e6;--sgrad:linear-gradient(90deg,#ea8a00,#fbbf24)}
+.s-occupied{--sc:var(--bad-c);--sbg:#fdf0f0;--sgrad:linear-gradient(90deg,#dc2626,#fb7185)}
+.m-edit{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;color:var(--muted);flex:none;transition:background .12s,color .12s}
 .m-edit:hover{background:var(--brand-soft);color:var(--brand-2)}
-.avatar{position:relative;width:52px;height:52px;border-radius:50%;margin:0 auto;display:grid;place-items:center;font-weight:700;font-size:17px;color:#fff;background:var(--av);letter-spacing:.02em;box-shadow:0 6px 14px rgba(16,24,40,.18),inset 0 1px 0 rgba(255,255,255,.25)}
+.avatar{position:relative;width:52px;height:52px;border-radius:50%;margin:0 auto;display:grid;place-items:center;font-weight:700;font-size:17px;color:#fff;background:var(--av);letter-spacing:.02em;box-shadow:0 4px 10px rgba(16,24,40,.16),inset 0 1px 0 rgba(255,255,255,.25)}
 .avatar .af{position:absolute;right:-4px;bottom:-4px;border-radius:50%;background:#fff;padding:1.5px;line-height:0;box-shadow:0 1px 3px rgba(0,0,0,.2)}
-.m-name{position:relative;font-weight:700;font-size:14.5px;margin-top:10px;letter-spacing:-.005em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.face-tog{display:flex;align-items:center;justify-content:center;gap:4px;margin:11px auto 0;background:#f2f4f8;border-radius:999px;padding:3px;width:max-content}
-.face-tog button{width:34px;height:28px;border-radius:999px;display:grid;place-items:center;transition:all .15s}
-.face-tog button .face{filter:grayscale(1);opacity:.45;transition:all .15s;transform:scale(.88)}
+.mc-mid{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 12px 10px 14px}
+.mc-stats{display:flex;gap:10px;font-size:12px;color:var(--muted);font-weight:500}
+.mc-stats span{display:flex;align-items:center;gap:4px}
+.face-tog{display:flex;align-items:center;gap:2px;background:#f2f4f8;border-radius:999px;padding:2px}
+.face-tog button{width:30px;height:24px;border-radius:999px;display:grid;place-items:center;transition:background .12s,box-shadow .12s}
+.face-tog button .face{filter:grayscale(1);opacity:.45;transition:filter .12s,opacity .12s}
 .face-tog button:hover .face{filter:none;opacity:.85}
 .face-tog button.on{background:#fff;box-shadow:0 1px 3px rgba(16,24,40,.18)}
-.face-tog button.on .face{filter:none;opacity:1;transform:scale(1.05)}
-.m-status{font-size:11.5px;font-weight:700;margin-top:7px;color:var(--st)}
-.m-foot{display:flex;align-items:center;justify-content:space-between;margin:12px -14px 0;padding:9px 14px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);font-weight:500;background:#fafbfd}
-.m-foot span{display:flex;align-items:center;gap:6px}
-.m-foot .chev{transition:transform .2s}
-.m-card.open .chev{transform:rotate(180deg);color:var(--brand-2)}
-.leaves{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:18px;width:100%}
-.leaves::before{content:"";position:absolute;left:50%;top:0;bottom:24px;border-left:2px dashed #c3cde0}
-.leaf{position:relative;z-index:1;width:190px;display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:12px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);cursor:pointer;text-align:left;transition:all .12s;animation:pop .22s ease both}
-.leaf:hover{border-color:#b9c7f3;box-shadow:0 0 0 3px rgba(47,91,234,.08),var(--shadow-md)}
-.leaf.hit{border-color:var(--warn-c);box-shadow:0 0 0 3px rgba(240,160,32,.18)}
+.face-tog button.on .face{filter:none;opacity:1}
+.mc-clients{border-top:1px solid var(--line);padding:6px}
+.leaf{display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:9px;cursor:pointer;transition:background .12s}
+.leaf:hover{background:#f4f6fb}
+.leaf.hit{background:#fff4e2;box-shadow:inset 0 0 0 1px #f4c56a}
+.leaf .l-ic{width:26px;height:26px;border-radius:7px}
 .l-ic{width:30px;height:30px;border-radius:9px;flex:none;display:grid;place-items:center;color:#fff;background:var(--gb,var(--grad-brand))}
-.leaf .l-txt{min-width:0}
+.leaf .l-txt{min-width:0;flex:1}
 .leaf .l-name{font-weight:600;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.leaf .l-work{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.leaf.empty{justify-content:center;color:var(--muted);font-size:12px;border-style:dashed;box-shadow:none;background:#fafbfd}
-@keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.leaf .l-work{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.leaf .l-n{font-size:11px;font-weight:700;color:var(--muted);background:#f1f4f9;border-radius:6px;padding:2px 6px;flex:none}
+.leaf.empty{justify-content:center;color:var(--muted);font-size:12px;border:1.5px dashed var(--line2);margin:2px}
+.mc-more{width:100%;display:flex;align-items:center;justify-content:center;gap:5px;padding:6px;margin-top:2px;border-radius:8px;font-size:12px;font-weight:600;color:var(--brand-2)}
+.mc-more:hover{background:var(--brand-soft)}
+.mc-more .ic{transition:transform .2s}
+.mc-more.up .ic{transform:rotate(180deg)}
 .empty-tree{text-align:center;padding:30px 10px 10px;color:var(--muted)}
 .empty-tree .et-ic{width:54px;height:54px;border-radius:15px;margin:0 auto 12px;display:grid;place-items:center;color:#fff;background:var(--gb)}
 .empty-tree b{display:block;color:var(--text);font-size:14px;margin-bottom:3px}
@@ -278,7 +277,9 @@ input,select,textarea{font:inherit;color:inherit}
 .f-table th{text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);padding:8px 14px 6px;border-top:1px solid var(--line)}
 .f-table td{padding:8px 14px;border-top:1px solid #f0f2f6;vertical-align:top}
 .f-table td:first-child{width:105px}
-.f-table td:nth-child(2){width:120px}
+.f-table td:nth-child(2){width:78px}
+.f-table td:nth-child(3){width:110px}
+.f-table th,.f-table td{padding-left:10px;padding-right:10px}
 .c-rem{display:flex;gap:8px;padding:10px 14px;border-top:1px solid var(--line);font-size:13px;background:#fcfcfe}
 .c-rem .lbl{color:var(--faint);font-weight:600;font-size:12px;display:flex;align-items:center;gap:5px;flex:none}
 .c-rem .val{white-space:pre-wrap;word-break:break-word}
@@ -298,11 +299,13 @@ input,select,textarea{font:inherit;color:inherit}
 .ce-h .x{margin-left:auto;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--faint)}
 .ce-h .x:hover{background:var(--bad-soft);color:var(--bad)}
 .fund{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 10px 4px;margin-bottom:8px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
-.fund-top{display:grid;grid-template-columns:130px 1fr 28px;gap:8px;align-items:start;margin-bottom:8px}
+.fund-top{display:grid;grid-template-columns:1fr 1fr 28px;gap:8px;align-items:start;margin-bottom:8px}
 .fund-top .x{margin-top:21px}
 .fund .lab{font-size:11.5px;margin-bottom:4px}
 .fund .inp{padding:8px 10px;font-size:13px}
 .fund select.inp{height:36px;padding:0 8px}
+.freq{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:6px;font-size:11.5px;font-weight:700;white-space:nowrap;background:#eef1f6;color:#334155}
+.freq.f-daily{background:#fde8e8;color:#9b1c1c}.freq.f-weekly{background:#e6f0ff;color:#1d3b9e}.freq.f-monthly{background:#e7f6ec;color:#146c37}
 .fund .x{width:28px;height:36px;border-radius:8px;display:grid;place-items:center;color:var(--faint)}
 .fund .x:hover{background:var(--bad-soft);color:var(--bad)}
 .fund-sec{margin-bottom:8px}
@@ -368,7 +371,7 @@ input,select,textarea{font:inherit;color:inherit}
 .seg button.on{background:#fff;color:var(--text);box-shadow:var(--shadow)}
 .rep-tool select,.rep-tool input{height:34px;border:1px solid var(--line2);border-radius:9px;padding:0 10px;background:#fff;font-size:13px;outline:none}
 .rep-tool input{width:150px}
-.rep-tool select{max-width:160px}
+.rep-tool select{max-width:150px}
 .rep-tool{gap:8px}
 .rep-tool .sp{flex:1}
 .rep-kpis{display:flex;gap:10px;padding:12px 20px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
@@ -514,6 +517,7 @@ const CONFIG = {
       on: '#4a1b22', mute: 'rgba(74,27,34,.66)', glass: 'rgba(255,255,255,.55)', trk: 'rgba(130,45,58,.13)',
       gb: 'linear-gradient(135deg,#9e4f5a 0%,#c27a7f 55%,#dea19c 100%)' }
   ],
+  frequencies: ['Daily', 'Weekly', 'Monthly'],
   defaultCountries: ['India', 'Brazil', 'Egypt', 'Colombia', 'Indonesia', 'Pakistan', 'Peru', 'Bangladesh']
 };
 
@@ -614,7 +618,8 @@ const teamMeta = id => CONFIG.teams.find(t => t.id === id) || CONFIG.teams[0];
 const tStyle = id => { const t = teamMeta(id); return `--g:${t.g};--gs:${t.gs};--on:${t.on};--mute:${t.mute};--glass:${t.glass};--trk:${t.trk};--gb:${t.gb};--grad-brand:${t.gb}`; };
 
 /* ===================== DATA ===================== */
-const newFund = () => ({ id: uid(), fundId: '', countries: [], reports: [], classes: '' });
+const newFund = () => ({ id: uid(), fundId: '', frequency: '', countries: [], reports: [], classes: '' });
+const fchip = f => f ? `<span class="freq f-${f.toLowerCase()}">${esc(f)}</span>` : '<span class="na">—</span>';
 const isVRR = r => /vrr/i.test(r);
 const hasVRR = f => f.reports.some(isVRR);
 const newClient = () => ({ id: uid(), name: '', funds: [newFund()], remarks: '' });
@@ -645,6 +650,7 @@ function normalize(d) {
           funds: (Array.isArray(c.funds) ? c.funds : []).slice(0, 200).filter(f => f && typeof f === 'object').map(f => {
             const cls = parseInt(f.classes);
             return { id: safeId(f.id), fundId: clean(f.fundId, 40),
+              frequency: CONFIG.frequencies.includes(f.frequency) ? f.frequency : '',
               countries: cleanList(Array.isArray(f.countries) ? f.countries : (f.country ? [f.country] : [])),
               reports: cleanList(f.reports), classes: cls > 0 ? Math.min(cls, 9999) : '' };
           }) };
@@ -772,7 +778,7 @@ async function doSync() {
     }
     if (!done) throw new Error('Someone else is saving at the same time — retrying');
   } catch (e) {
-    failed = true; setSync('error', e.message); toast('Sync failed: ' + e.message, true);
+    failed = true; const wasErr = $('#sync').classList.contains('error'); setSync('error', e.message); if (!wasErr) toast('Sync failed: ' + e.message, true);
     retryTimer = setTimeout(doSync, 15000);
   }
   syncing = false;
@@ -793,7 +799,7 @@ function canEdit() { return !!session.key; }
 window.addEventListener('beforeunload', e => { if (pending.length) { e.preventDefault(); e.returnValue = ''; } });
 
 /* ===================== UI STATE + ROUTER ===================== */
-const ui = { page: 'home', expanded: new Set(), q: '', drawer: null, rep: { tab: 'detail', team: 'all', member: '', type: '', country: '', q: '' } };
+const ui = { page: 'home', expanded: new Set(), q: '', drawer: null, rep: { tab: 'detail', team: 'all', member: '', type: '', country: '', freq: '', q: '' } };
 function routeFromHash() { const h = location.hash.replace('#/', '').replace('#', ''); ui.page = CONFIG.teams.some(t => t.id === h) ? h : 'home'; }
 function go(page) { location.hash = page === 'home' ? '#/' : '#/' + page; }
 window.addEventListener('hashchange', () => { routeFromHash(); ui.q = ''; closeDrawer(true); render(); window.scrollTo(0, 0); });
@@ -909,30 +915,35 @@ function renderTeam(pg, id) {
     </section>`;
   if (keepFocus) { const i = $('#tq'); i.focus(); i.setSelectionRange(i.value.length, i.value.length); }
 }
+const PREVIEW = 3;   // clients shown per card before "+ more"
 function branch(m, q) {
   const memberHit = q && qm(m.name, q);
-  const hits = q ? m.clients.filter(c => qm(c.name, q) || qm(c.remarks, q) || c.funds.some(f => qm(f.fundId, q) || f.countries.some(x => qm(x, q)) || f.reports.some(r => qm(r, q)))).map(c => c.id) : [];
+  const hits = q ? m.clients.filter(c => qm(c.name, q) || qm(c.remarks, q) || c.funds.some(f => qm(f.fundId, q) || qm(f.frequency, q) || f.countries.some(x => qm(x, q)) || f.reports.some(r => qm(r, q)))).map(c => c.id) : [];
   const dim = q && !memberHit && !hits.length;
   const open = ui.expanded.has(m.id) || hits.length > 0;
   const st = STATUS[m.status];
   const nf = m.clients.reduce((a, c) => a + c.funds.length, 0);
-  const leaves = open ? `<div class="leaves">${m.clients.length ? m.clients.map(c => {
+  const shown = open ? m.clients : m.clients.slice(0, PREVIEW);
+  const rows = m.clients.length ? shown.map(c => {
       const reps = clientReports(c);
-      const sub = c.funds.length ? `${plural(c.funds.length, 'fund')}${reps.length ? ' · ' + reps.join(', ') : ''}` : 'No funds added';
       return `<div class="leaf ${hits.includes(c.id) ? 'hit' : ''}" data-act="client" data-id="${m.id}" data-cid="${c.id}">
-        <span class="l-ic">${ic('building', 15)}</span>
-        <div class="l-txt"><div class="l-name">${esc(c.name || 'Untitled client')}</div><div class="l-work">${esc(sub)}</div></div></div>`;
-    }).join('') : `<div class="leaf empty" data-act="edit" data-id="${m.id}">${ic('plus', 14)} Add clients</div>`}</div>` : '';
-  return `<div class="branch ${dim ? 'dim' : ''}">
-    <div class="m-card s-${m.status} ${open ? 'open' : ''}" data-act="toggle" data-id="${m.id}">
-      <span class="bar"></span>
+        <span class="l-ic">${ic('building', 13)}</span>
+        <div class="l-txt"><div class="l-name">${esc(c.name || 'Untitled client')}</div><div class="l-work">${esc(reps.join(', ') || 'No report types')}</div></div>
+        <span class="l-n">${c.funds.length}</span></div>`;
+    }).join('') : `<div class="leaf empty" data-act="edit" data-id="${m.id}">${ic('plus', 14)} Add clients</div>`;
+  const more = m.clients.length > PREVIEW ? `<button class="mc-more ${open ? 'up' : ''}" data-act="toggle" data-id="${m.id}">${open ? 'Show less' : `+ ${m.clients.length - PREVIEW} more client${m.clients.length - PREVIEW === 1 ? '' : 's'}`} ${ic('chev', 14)}</button>` : '';
+  return `<div class="mc s-${m.status} ${dim ? 'dim' : ''}">
+    <span class="bar"></span>
+    <div class="mc-top" data-act="member" data-id="${m.id}" title="Open ${esc(m.name)}">
+      <div class="avatar" style="--av:${avColor(m.name)}">${esc(initials(m.name))}<span class="af">${face(m.status, 16)}</span></div>
+      <div class="mc-who"><div class="m-name" title="${esc(m.name)}">${esc(m.name)}</div><div class="m-status" style="--st:${st.t}">${st.label}</div></div>
       <button class="m-edit" data-act="edit" data-id="${m.id}" title="Edit particulars">${ic('pencil', 14)}</button>
-      <div class="avatar" style="--av:${avColor(m.name)}">${esc(initials(m.name))}<span class="af">${face(m.status, 18)}</span></div>
-      <div class="m-name" title="${esc(m.name)}">${esc(m.name)}</div>
-      <div class="face-tog" title="Bandwidth">${ORDER.map(k => `<button class="${m.status === k ? 'on' : ''}" data-act="status" data-id="${m.id}" data-s="${k}" title="${STATUS[k].label}">${face(k, 20)}</button>`).join('')}</div>
-      <div class="m-status" style="--st:${st.t}">${st.label}</div>
-      <div class="m-foot"><span>${ic('briefcase', 14)} ${plural(m.clients.length, 'client')} · ${plural(nf, 'fund')}</span><span class="chev">${ic('chev', 16)}</span></div>
-    </div>${leaves}
+    </div>
+    <div class="mc-mid">
+      <div class="mc-stats"><span>${ic('briefcase', 13)} ${m.clients.length}</span><span>${ic('hash', 13)} ${nf} fund${nf === 1 ? '' : 's'}</span></div>
+      <div class="face-tog" title="Bandwidth">${ORDER.map(k => `<button class="${m.status === k ? 'on' : ''}" data-act="status" data-id="${m.id}" data-s="${k}" title="${STATUS[k].label}">${face(k, 18)}</button>`).join('')}</div>
+    </div>
+    <div class="mc-clients">${rows}${more}</div>
   </div>`;
 }
 
@@ -995,8 +1006,8 @@ function renderDrawer() {
         <div class="c-list">${m.clients.length ? m.clients.map(c => `
           <div class="c-card ${D.focus === c.id ? 'focus' : ''}" id="cc-${c.id}">
             <div class="c-head"><span class="l-ic">${ic('building', 15)}</span><div class="c-name">${esc(c.name || 'Untitled client')}</div><span class="count">${plural(c.funds.length, 'fund')}</span></div>
-            ${c.funds.length ? `<table class="f-table"><thead><tr><th>Fund ID</th><th>Country</th><th>Report types</th></tr></thead><tbody>
-              ${c.funds.map(f => `<tr><td>${f.fundId ? `<span class="fid">${esc(f.fundId)}</span>` : '<span class="na">—</span>'}</td><td>${ctry(f.countries)}</td><td>${repChips(f)}</td></tr>`).join('')}
+            ${c.funds.length ? `<table class="f-table"><thead><tr><th>Fund ID</th><th>Freq.</th><th>Country</th><th>Report types</th></tr></thead><tbody>
+              ${c.funds.map(f => `<tr><td>${f.fundId ? `<span class="fid">${esc(f.fundId)}</span>` : '<span class="na">—</span>'}</td><td>${fchip(f.frequency)}</td><td>${ctry(f.countries)}</td><td>${repChips(f)}</td></tr>`).join('')}
               </tbody></table>` : ''}
             <div class="c-rem"><span class="lbl">${ic('msg', 13)} Remarks</span><span class="val ${c.remarks ? '' : 'na'}">${esc(c.remarks || '—')}</span></div>
           </div>`).join('') : `<div class="d-empty">No clients assigned yet.<br><button class="btn ghost sm" style="margin-top:10px" data-act="edit" data-id="${m.id}">${ic('plus', 14)} Add clients</button></div>`}</div>
@@ -1025,9 +1036,10 @@ function renderDrawer() {
             ${c.funds.map((f, j) => `<div class="fund">
               <div class="fund-top">
                 <div><label class="lab">Fund ID</label><input class="inp" data-ff="fundId" data-cid="${c.id}" data-fid="${f.id}" value="${esc(f.fundId)}" maxlength="40" placeholder="e.g. 828323"></div>
-                <div><label class="lab">Country serviced</label>${msHtml(c, f, 'ctry')}</div>
+                <div><label class="lab">Frequency</label><select class="inp" data-ff="frequency" data-cid="${c.id}" data-fid="${f.id}"><option value="">Select frequency</option>${CONFIG.frequencies.map(x => `<option ${f.frequency === x ? 'selected' : ''}>${x}</option>`).join('')}</select></div>
                 <button class="x" data-act="rm-fund" data-cid="${c.id}" data-fid="${f.id}" title="Remove fund">${ic('trash', 14)}</button>
               </div>
+              <div class="fund-sec"><label class="lab">Country serviced</label>${msHtml(c, f, 'ctry')}</div>
               <div class="fund-sec"><label class="lab">Type of report</label>${msHtml(c, f, 'rep')}</div>
               ${hasVRR(f) ? `<div class="fund-cls"><label class="lab">${ic('layersI', 14)} No. of classes (VRR)</label><input class="inp" type="number" min="1" step="1" data-ff="classes" data-cid="${c.id}" data-fid="${f.id}" value="${esc(f.classes)}" placeholder="e.g. 3"></div>` : ''}
             </div>`).join('')}
@@ -1092,7 +1104,7 @@ function saveMember() {
   d.name = d.name.trim();
   if (!d.name) { toast('Please enter the member name', true); $('#f-name').focus(); return; }
   d.clients = d.clients.map(c => ({ id: c.id, name: c.name.trim(), remarks: c.remarks.trim(),
-      funds: c.funds.map(f => ({ id: f.id, fundId: clean(f.fundId, 40), countries: f.countries, reports: f.reports, classes: hasVRR(f) && parseInt(f.classes) > 0 ? Math.min(parseInt(f.classes), 9999) : '' })).filter(f => f.fundId || f.reports.length || f.countries.length) }))
+      funds: c.funds.map(f => ({ id: f.id, fundId: clean(f.fundId, 40), frequency: CONFIG.frequencies.includes(f.frequency) ? f.frequency : '', countries: f.countries, reports: f.reports, classes: hasVRR(f) && parseInt(f.classes) > 0 ? Math.min(parseInt(f.classes), 9999) : '' })).filter(f => f.fundId || f.reports.length || f.countries.length) }))
     .filter(c => c.name || c.funds.length || c.remarks);
   d.updatedAt = new Date().toISOString();
   const teamId = D.teamId, isNew = D.isNew;
@@ -1115,13 +1127,13 @@ function repRows(f = ui.rep) {
     team(data, tm.id).members.filter(m => !f.member || m.id === f.member).forEach(m => {
       const base = { team: tm.name, teamId: tm.id, member: m.name, mid: m.id, status: m.status };
       const mr = [];
-      if (!m.clients.length) mr.push({ ...base, client: '', fundId: '', countries: [], reports: [], classes: '', remarks: '' });
+      if (!m.clients.length) mr.push({ ...base, client: '', fundId: '', frequency: '', countries: [], reports: [], classes: '', remarks: '' });
       m.clients.forEach(c => {
-        if (!c.funds.length) mr.push({ ...base, client: c.name, fundId: '', countries: [], reports: [], classes: '', remarks: c.remarks });
-        c.funds.forEach(fd => mr.push({ ...base, client: c.name, fundId: fd.fundId, countries: fd.countries, reports: fd.reports, classes: fd.classes, remarks: c.remarks }));
+        if (!c.funds.length) mr.push({ ...base, client: c.name, fundId: '', frequency: '', countries: [], reports: [], classes: '', remarks: c.remarks });
+        c.funds.forEach(fd => mr.push({ ...base, client: c.name, fundId: fd.fundId, frequency: fd.frequency, countries: fd.countries, reports: fd.reports, classes: fd.classes, remarks: c.remarks }));
       });
-      mr.filter(r => (!f.type || r.reports.includes(f.type)) && (!f.country || r.countries.includes(f.country)) &&
-        (!q || [r.member, r.client, r.fundId, r.remarks, ...r.countries, ...r.reports].some(x => qm(x, q)))).forEach(r => rows.push(r));
+      mr.filter(r => (!f.type || r.reports.includes(f.type)) && (!f.country || r.countries.includes(f.country)) && (!f.freq || r.frequency === f.freq) &&
+        (!q || [r.member, r.client, r.fundId, r.frequency, r.remarks, ...r.countries, ...r.reports].some(x => qm(x, q)))).forEach(r => rows.push(r));
     });
   });
   return rows;
@@ -1141,7 +1153,7 @@ function memberSummary(f = ui.rep) {
 }
 function openReport(teamId) {
   hideTip();
-  ui.rep = { tab: 'detail', team: teamId || 'all', member: '', type: '', country: '', q: '' };
+  ui.rep = { tab: 'detail', team: teamId || 'all', member: '', type: '', country: '', freq: '', q: '' };
   openModal(`
     <div class="mh rep-head"><div class="m-ic">${ic('table', 19)}</div><div><h3>${esc(CONFIG.company)} WorkBoard — Consolidated work report</h3><p>Generated ${fmt(new Date().toISOString())} · data last updated ${fmt(data.updatedAt)}</p></div><button class="icon-btn" data-act="close-modal">${ic('x', 18)}</button></div>
     <div class="rep-tool" id="repTool"></div>
@@ -1157,6 +1169,7 @@ function renderRepTools() {
     <select data-rf="team"><option value="all">Both teams</option>${CONFIG.teams.map(t => `<option value="${t.id}" ${r.team === t.id ? 'selected' : ''}>${esc(t.name)}</option>`).join('')}</select>
     <select data-rf="member"><option value="">All members</option>${members.map(m => `<option value="${m.id}" ${r.member === m.id ? 'selected' : ''}>${esc(m.name)}${r.team === 'all' ? ' · ' + esc(m.t) : ''}</option>`).join('')}</select>
     <select data-rf="type"><option value="">All report types</option>${data.reportTypes.map(t => `<option ${r.type === t ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select>
+    <select data-rf="freq"><option value="">All frequencies</option>${CONFIG.frequencies.map(t => `<option ${r.freq === t ? 'selected' : ''}>${t}</option>`).join('')}</select>
     <select data-rf="country"><option value="">All countries</option>${data.countries.map(t => `<option ${r.country === t ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select>
     <input id="repQ" type="search" placeholder="Search…" value="${esc(r.q)}">
     <span class="sp"></span>
@@ -1174,7 +1187,7 @@ function renderRepTable() {
   if (r.tab === 'detail') {
     if (!rows.length) { $('#repTable').innerHTML = `<div class="rep-empty">No rows match these filters.</div>`; return; }
     let prev = null;
-    $('#repTable').innerHTML = `<table class="rt"><thead><tr><th>#</th><th>Team</th><th>Member</th><th>Bandwidth</th><th>Client</th><th>Fund ID</th><th>Country</th><th>Report types</th><th>Remarks</th></tr></thead><tbody>
+    $('#repTable').innerHTML = `<table class="rt"><thead><tr><th>#</th><th>Team</th><th>Member</th><th>Bandwidth</th><th>Client</th><th>Fund ID</th><th>Frequency</th><th>Country</th><th>Report types</th><th>Remarks</th></tr></thead><tbody>
       ${rows.map((x, i) => { const first = x.mid !== prev; prev = x.mid; return `<tr class="${first && i ? 'grp' : ''}">
         <td class="num" style="color:var(--faint)">${i + 1}</td>
         <td>${first ? tp(x.teamId, x.team) : ''}</td>
@@ -1182,6 +1195,7 @@ function renderRepTable() {
         <td>${first ? `<span class="mem" style="font-weight:500;color:${STATUS[x.status].t}">${face(x.status, 18)} ${STATUS[x.status].short}</span>` : ''}</td>
         <td>${esc(x.client) || '<span class="na">—</span>'}</td>
         <td>${x.fundId ? `<span class="fid">${esc(x.fundId)}</span>` : '<span class="na">—</span>'}</td>
+        <td>${fchip(x.frequency)}</td>
         <td>${ctry(x.countries)}</td>
         <td>${x.reports.length ? repChips(x) : '<span class="na">—</span>'}</td>
         <td style="white-space:pre-wrap;max-width:280px">${esc(x.remarks) || '<span class="na">—</span>'}</td></tr>`; }).join('')}
@@ -1198,10 +1212,10 @@ function renderRepTable() {
 }
 function loadScript(src) { return new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
 async function downloadExcel() {
-  const f = $('#repTable') ? ui.rep : { team: 'all', member: '', type: '', country: '', q: '' };
+  const f = $('#repTable') ? ui.rep : { team: 'all', member: '', type: '', country: '', freq: '', q: '' };
   const rows = repRows(f), ms = memberSummary(f), types = data.reportTypes;
-  const detail = [['Team', 'Member', 'Bandwidth', 'Client', 'Fund ID', 'Country Serviced', 'Report Types', 'No. of Classes (VRR)', 'Remarks'],
-    ...rows.map(r => [r.team, r.member, STATUS[r.status].label, r.client, r.fundId, r.countries.join(', '), r.reports.join(', '), r.reports.some(isVRR) && r.classes !== '' ? +r.classes : '', r.remarks])];
+  const detail = [['Team', 'Member', 'Bandwidth', 'Client', 'Fund ID', 'Frequency', 'Country Serviced', 'Report Types', 'No. of Classes (VRR)', 'Remarks'],
+    ...rows.map(r => [r.team, r.member, STATUS[r.status].label, r.client, r.fundId, r.frequency, r.countries.join(', '), r.reports.join(', '), r.reports.some(isVRR) && r.classes !== '' ? +r.classes : '', r.remarks])];
   const byMember = [['Team', 'Member', 'Bandwidth', 'Clients', 'Funds', 'Countries', ...types, 'VRR Classes', 'Total Reports'],
     ...ms.map(m => [m.team, m.member, STATUS[m.status].label, m.clients, m.funds, m.countries.join(', '), ...types.map(t => m.per[t]), m.classes, m.total])];
   const byCountry = [['Country Serviced', 'Funds', 'VRR Classes', 'Members'], ...[...new Set(rows.flatMap(r => r.countries))].sort().map(c => { const rs = rows.filter(r => r.countries.includes(c)); return [c, rs.length, rs.reduce((a, r) => a + (r.reports.some(isVRR) ? (+r.classes || 0) : 0), 0), [...new Set(rs.map(r => r.member))].join(', ')]; })];
@@ -1211,7 +1225,7 @@ async function downloadExcel() {
     if (!window.XLSX) { toast('Preparing Excel…'); await loadScript('https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js'); }
     const X = window.XLSX, wb = X.utils.book_new();
     const add = (aoa, name, widths) => { const ws = X.utils.aoa_to_sheet(aoa); ws['!cols'] = widths.map(w => ({ wch: w })); if (aoa.length > 1) ws['!autofilter'] = { ref: ws['!ref'] }; ws['!freeze'] = { xSplit: 0, ySplit: 1 }; X.utils.book_append_sheet(wb, ws, name); };
-    add(detail, 'Detailed', [10, 22, 22, 26, 14, 16, 40, 12, 40]);
+    add(detail, 'Detailed', [10, 22, 22, 26, 14, 11, 22, 40, 12, 40]);
     add(byMember, 'By Member', [10, 22, 22, 9, 9, 28, ...types.map(t => Math.max(10, t.length + 2)), 12, 13]);
     add(byCountry, 'By Country', [20, 9, 12, 60]);
     add(byType, 'By Report Type', [22, 9, 60]);
@@ -1349,7 +1363,7 @@ function showTip(leaf) {
   const tip = $('#tip');
   tip.innerHTML = `<h4>${ic('building', 14)} ${esc(c.name || 'Untitled client')}</h4>
     <div class="tl">${ic('hash', 12)} Funds & reports</div>
-    ${c.funds.length ? c.funds.map(fd => `<div class="tf"><span class="fid">${esc(fd.fundId || '—')}</span><div>${fd.countries.length ? `<div class="ctry">${ic('globe', 12)} ${esc(fd.countries.join(', '))}</div>` : ''}${repChips(fd, true)}</div></div>`).join('') : '<div class="tv">—</div>'}
+    ${c.funds.length ? c.funds.map(fd => `<div class="tf"><span class="fid">${esc(fd.fundId || '—')}</span><div>${fd.frequency ? `<div class="ctry">${ic('clock', 12)} ${esc(fd.frequency)}</div>` : ''}${fd.countries.length ? `<div class="ctry">${ic('globe', 12)} ${esc(fd.countries.join(', '))}</div>` : ''}${repChips(fd, true)}</div></div>`).join('') : '<div class="tv">—</div>'}
     <div class="tl">${ic('msg', 12)} Remarks</div><div class="tv">${esc(c.remarks || '—')}</div>
     <div class="th">Click to open · handled by ${esc(f.m.name)}</div>`;
   const r = leaf.getBoundingClientRect(), w = 300;
@@ -1372,7 +1386,8 @@ document.addEventListener('click', async e => {
   switch (act) {
     case 'home': go('home'); break;
     case 'open-team': go(a.dataset.team); break;
-    case 'toggle': ui.expanded.has(id) ? ui.expanded.delete(id) : ui.expanded.add(id); render(); break;
+    case 'toggle': e.stopPropagation(); ui.expanded.has(id) ? ui.expanded.delete(id) : ui.expanded.add(id); render(); break;
+    case 'member': openDrawer(id, 'view'); break;
     case 'edit': e.stopPropagation(); openDrawer(id, 'edit'); break;
     case 'client': hideTip(); openDrawer(id, 'view', a.dataset.cid); break;
     case 'status': {
