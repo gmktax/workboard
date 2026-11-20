@@ -175,6 +175,42 @@ input,select,textarea{font:inherit;color:inherit}
 .branches{position:relative;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;align-items:start;padding-top:20px;border-top:2px solid var(--line2);border-radius:14px 14px 0 0}
 .branches::before,.branches::after{content:"";position:absolute;top:-2px;width:2px;height:12px;background:var(--line2)}
 .branches::before{left:0}.branches::after{right:0}
+.vt{display:inline-flex;background:#eef1f6;padding:3px;border-radius:10px;gap:2px}
+.vt button{display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:8px;font-size:13px;font-weight:600;color:var(--muted)}
+.vt button.on{background:#fff;color:var(--text);box-shadow:var(--shadow)}
+.vt .count{padding:1px 7px;font-size:11px}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.cc{position:relative;display:flex;flex-direction:column;gap:10px;padding:14px 16px 13px 18px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);cursor:pointer;overflow:hidden;transition:box-shadow .15s,border-color .15s}
+.cc::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gb)}
+.cc:hover{box-shadow:var(--shadow-md);border-color:var(--line2)}
+.cc.hit{border-color:#f4c56a;box-shadow:0 0 0 3px rgba(240,160,32,.15)}
+.cc-top{display:flex;align-items:center;gap:12px}
+.cc-logo{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px;background:var(--gb);flex:none}
+.cc-name{font-weight:700;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cc-sub{font-size:12px;color:var(--muted)}
+.cc-n{margin-left:auto;text-align:right;flex:none}
+.cc-n b{display:block;font-size:22px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.cc-n span{font-size:11px;color:var(--muted);font-weight:600}
+.cc-line{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);min-width:0}
+.cc-line .ic{color:var(--faint);flex:none}
+.cc-line span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cc-line b{color:var(--text);font-weight:600}
+.cc-mix{display:flex;height:6px;border-radius:99px;overflow:hidden;background:#eef1f6;gap:2px}
+.cc-mix i{display:block;height:100%}
+.cc-empty{text-align:center;padding:40px 10px;color:var(--muted)}
+.drawer.wide{width:620px}
+.cd-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.cd-sum div{border:1px solid var(--line);border-radius:12px;padding:9px 11px;background:#fbfcfe}
+.cd-sum b{display:block;font-size:19px;font-weight:800;letter-spacing:-.02em}
+.cd-sum span{font-size:11.5px;color:var(--muted)}
+.cd-grp{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:12px}
+.cd-gh{display:flex;align-items:center;gap:10px;padding:10px 12px;background:linear-gradient(90deg,var(--sbg,#f5f7ff),#fff);cursor:pointer}
+.cd-gh .avatar{width:32px;height:32px;font-size:12px;margin:0}
+.cd-gh .nm{font-weight:700;font-size:13.5px;flex:1}
+.cf-row{display:grid;grid-template-columns:110px 74px 1fr;gap:10px;align-items:start;padding:9px 12px;border-top:1px solid #eef1f6;font-size:12.5px;cursor:default;transition:background .12s}
+.cf-row:hover{background:#f8faff}
+.cf-row .rchips{gap:3px}
+.cf-c{color:var(--muted);font-size:11.5px;margin-top:4px;display:flex;align-items:center;gap:4px}
 .mc{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s,border-color .15s,opacity .2s}
 .mc:hover{box-shadow:var(--shadow-md);border-color:var(--line2)}
 .mc.dim{opacity:.3}
@@ -226,7 +262,7 @@ input,select,textarea{font:inherit;color:inherit}
 .fid{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-weight:600;font-size:12.5px;background:#f1f4f9;border:1px solid var(--line);padding:1px 7px;border-radius:6px;white-space:nowrap}
 
 /* ---------- TOOLTIP ---------- */
-.tip{position:fixed;z-index:60;width:300px;background:linear-gradient(160deg,#13244a,#0c1830);color:#e9eefb;border-radius:14px;padding:13px 14px;box-shadow:var(--shadow-lg);pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .12s,transform .12s;font-size:12.5px}
+.tip{position:fixed;z-index:60;max-height:calc(100vh - 16px);overflow:hidden;width:300px;background:linear-gradient(160deg,#13244a,#0c1830);color:#e9eefb;border-radius:14px;padding:13px 14px;box-shadow:var(--shadow-lg);pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .12s,transform .12s;font-size:12.5px}
 .tip.show{opacity:1;transform:none}
 .tip h4{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:7px}
 .tip .tl{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:#93a3c4;font-weight:600;display:flex;align-items:center;gap:5px;margin-top:9px}
@@ -799,7 +835,7 @@ function canEdit() { return !!session.key; }
 window.addEventListener('beforeunload', e => { if (pending.length) { e.preventDefault(); e.returnValue = ''; } });
 
 /* ===================== UI STATE + ROUTER ===================== */
-const ui = { page: 'home', expanded: new Set(), q: '', drawer: null, rep: { tab: 'detail', team: 'all', member: '', type: '', country: '', freq: '', q: '' } };
+const ui = { page: 'home', tview: 'people', expanded: new Set(), q: '', drawer: null, rep: { tab: 'detail', team: 'all', member: '', type: '', country: '', freq: '', q: '' } };
 function routeFromHash() { const h = location.hash.replace('#/', '').replace('#', ''); ui.page = CONFIG.teams.some(t => t.id === h) ? h : 'home'; }
 function go(page) { location.hash = page === 'home' ? '#/' : '#/' + page; }
 window.addEventListener('hashchange', () => { routeFromHash(); ui.q = ''; closeDrawer(true); render(); window.scrollTo(0, 0); });
@@ -835,7 +871,7 @@ function render() {
   const pg = $('#page');
   $('#crumb').innerHTML = ui.page === 'home' ? '<b>Select team</b>' : `<span>Teams</span>${ic('chev', 14).replace('<svg', '<svg style="transform:rotate(-90deg)"')}<b>${esc(teamMeta(ui.page).name)}</b>`;
   if (ui.page === 'home') { pg.removeAttribute('style'); renderHome(pg); } else { pg.setAttribute('style', tStyle(ui.page)); renderTeam(pg, ui.page); }
-  if (ui.drawer && ui.drawer.mode === 'view') renderDrawer();
+  if (ui.drawer && (ui.drawer.mode === 'view' || ui.drawer.mode === 'client')) renderDrawer();
   if ($('#modalWrap').classList.contains('show') && $('#repTable')) renderRepTable();
 }
 
@@ -904,16 +940,55 @@ function renderTeam(pg, id) {
     </section>
     <section class="panel" style="${tStyle(id)}">
       <div class="panel-head">
-        <div class="ph-title"><div class="ph-ic">${ic('users', 16)}</div>Team structure <span class="count">${plural(s.n, 'member')}</span></div>
-        <div class="ph-search">${ic('search', 15)}<input id="tq" type="search" placeholder="Search member, client, fund ID, report…" value="${esc(ui.q)}" autocomplete="off"></div>
+        <div class="vt"><button class="${ui.tview === 'people' ? 'on' : ''}" data-act="tview" data-v="people">${ic('users', 15)} People <span class="count">${s.n}</span></button><button class="${ui.tview === 'clients' ? 'on' : ''}" data-act="tview" data-v="clients">${ic('building', 15)} Clients <span class="count">${clientIndex(id).length}</span></button></div>
+        <div class="ph-search">${ic('search', 15)}<input id="tq" type="search" placeholder="${ui.tview === 'clients' ? 'Search client, fund ID, country, person…' : 'Search member, client, fund ID, report…'}" value="${esc(ui.q)}" autocomplete="off"></div>
         <div class="ph-actions">
-          ${t.members.length ? `<button class="btn ghost sm" data-act="expand-all">${ic('expand', 15)} ${allOpen ? 'Collapse all' : 'Show all clients'}</button>` : ''}
+          ${ui.tview === 'clients' ? `<button class="btn ghost sm" data-act="client-dl">${ic('download', 15)} Download client list</button>` : ''}
+          ${ui.tview === 'people' && t.members.length ? `<button class="btn ghost sm" data-act="expand-all">${ic('expand', 15)} ${allOpen ? 'Collapse all' : 'Show all clients'}</button>` : ''}
           <button class="btn primary sm" data-act="add-member">${ic('userPlus', 15)} Add member</button>
         </div>
       </div>
-      <div class="tree-scroll"><div class="tree">${body}</div></div>
+      <div class="tree-scroll">${ui.tview === 'clients' ? clientCards(id, q) : `<div class="tree">${body}</div>`}</div>
     </section>`;
   if (keepFocus) { const i = $('#tq'); i.focus(); i.setSelectionRange(i.value.length, i.value.length); }
+}
+const ckey = n => clean(n, 120).toLowerCase().replace(/\s+/g, ' ');
+function clientIndex(teamId) {
+  const map = new Map();
+  team(data, teamId).members.forEach(m => m.clients.forEach(c => {
+    const k = ckey(c.name) || '(untitled)';
+    if (!map.has(k)) map.set(k, { key: k, names: {}, funds: [], members: new Map(), remarks: [] });
+    const g = map.get(k);
+    g.names[c.name || 'Untitled client'] = (g.names[c.name || 'Untitled client'] || 0) + 1;
+    if (!g.members.has(m.id)) g.members.set(m.id, { m, funds: [] });
+    if (c.remarks) g.remarks.push({ who: m.name, text: c.remarks });
+    c.funds.forEach(f => { const x = { ...f, member: m.name, mid: m.id, status: m.status }; g.funds.push(x); g.members.get(m.id).funds.push(x); });
+  }));
+  return [...map.values()].map(g => {
+    g.name = Object.entries(g.names).sort((a, b) => b[1] - a[1] || (b[0] > a[0] ? 1 : -1))[0][0];
+    g.countries = [...new Set(g.funds.flatMap(f => f.countries))].sort((a, b) => data.countries.indexOf(a) - data.countries.indexOf(b));
+    g.reports = [...new Set(g.funds.flatMap(f => f.reports))].sort((a, b) => data.reportTypes.indexOf(a) - data.reportTypes.indexOf(b));
+    g.fundIds = new Set(g.funds.map(f => f.fundId.toLowerCase()).filter(Boolean));
+    return g;
+  }).sort((a, b) => b.funds.length - a.funds.length || a.name.localeCompare(b.name));
+}
+function clientCards(teamId, q) {
+  const list = clientIndex(teamId).filter(g => !q || qm(g.name, q) || g.funds.some(f => qm(f.fundId, q) || qm(f.member, q) || qm(f.frequency, q) || f.countries.some(x => qm(x, q)) || f.reports.some(r => qm(r, q))));
+  if (!list.length) return `<div class="cc-empty">${q ? 'No clients match your search.' : 'No clients yet — add them to team members in the People view.'}</div>`;
+  const RCOL = ['#1d3b9e', '#0b6475', '#c27a12', '#6d3fc0', '#1f8a4c', '#b0275f', '#475569'];
+  return `<div class="cgrid">${list.map(g => {
+    const ppl = [...g.members.values()].map(p => p.m.name.split(' ')[0]);
+    const mix = g.reports.map(r => ({ r, n: g.funds.filter(f => f.reports.includes(r)).length }));
+    return `<div class="cc ${q ? 'hit' : ''}" data-act="client-view" data-key="${esc(g.key)}">
+      <div class="cc-top"><div class="cc-logo">${esc(initials(g.name))}</div>
+        <div style="min-width:0"><div class="cc-name" title="${esc(g.name)}">${esc(g.name)}</div><div class="cc-sub">${ppl.length} ${ppl.length === 1 ? 'person' : 'people'} · ${plural(g.countries.length, 'country').replace('countrys', 'countries')}</div></div>
+        <div class="cc-n"><b>${g.funds.length}</b><span>FUNDS</span></div></div>
+      <div class="cc-line">${ic('users', 13)}<span><b>${esc(ppl.slice(0, 3).join(', '))}</b>${ppl.length > 3 ? ` +${ppl.length - 3} more` : ''}</span></div>
+      <div class="cc-line">${ic('globe', 13)}<span>${esc(g.countries.join(' · ') || '—')}</span></div>
+      <div class="cc-line">${ic('tag', 13)}<span>${mix.length ? mix.map(x => `${esc(x.r)} <b>${x.n}</b>`).join(' · ') : '—'}</span></div>
+      ${mix.length ? `<div class="cc-mix" title="Report mix">${mix.map((x, i) => `<i style="flex:${x.n};background:${RCOL[data.reportTypes.indexOf(x.r) % RCOL.length]}"></i>`).join('')}</div>` : ''}
+    </div>`;
+  }).join('')}</div>`;
 }
 const PREVIEW = 3;   // clients shown per card before "+ more"
 function branch(m, q) {
@@ -986,6 +1061,41 @@ function msHtml(c, f, kind) {
 function renderDrawer() {
   const D = ui.drawer, el = $('#drawer'); if (!D) return;
   const prevScroll = el.querySelector('.d-body') ? el.querySelector('.d-body').scrollTop : 0;
+  el.classList.toggle('wide', D.mode === 'client');
+  if (D.mode === 'client') {
+    const g = clientIndex(D.teamId).find(x => x.key === D.key); if (!g) { closeDrawer(true); return; }
+    const tm = teamMeta(D.teamId), ppl = [...g.members.values()];
+    const vrr = g.funds.reduce((a, f) => a + (hasVRR(f) ? (+f.classes || 0) : 0), 0);
+    el.setAttribute('style', tStyle(D.teamId));
+    el.innerHTML = `
+      <div class="d-head">
+        <div class="cc-logo" style="width:56px;height:56px;border-radius:15px;font-size:19px">${esc(initials(g.name))}</div>
+        <div class="d-who"><div class="d-name">${esc(g.name)}</div><div class="d-role">Client · ${esc(tm.name)}</div>
+          <div class="d-meta"><span class="tag">${ic('hash', 12)} ${plural(g.funds.length, 'fund')}</span><span class="tag">${ic('users', 12)} ${ppl.length} ${ppl.length === 1 ? 'person' : 'people'}</span><span class="tag">${ic('globe', 12)} ${plural(g.countries.length, 'country').replace('countrys', 'countries')}</span></div></div>
+        <button class="x-btn" data-act="close-drawer" title="Close">${ic('x', 18)}</button>
+      </div>
+      <div class="d-body">
+        <div class="cd-sum">
+          <div><b>${g.funds.length}</b><span>Funds</span></div>
+          <div><b>${ppl.length}</b><span>Handled by</span></div>
+          <div><b>${g.countries.length}</b><span>Countries</span></div>
+          <div><b>${vrr}</b><span>VRR classes</span></div>
+        </div>
+        <div class="sec-t">${ic('globe', 14)} Countries serviced</div><div style="margin-bottom:14px">${ctry(g.countries)}</div>
+        <div class="sec-t">${ic('tag', 14)} Report types</div><div style="margin-bottom:16px">${g.reports.length ? `<div class="rchips">${g.reports.map(r => rchip(r) + `<span class="cls" style="background:#eef1f6;color:#334155">${g.funds.filter(f => f.reports.includes(r)).length}</span>`).join('')}</div>` : '<span class="na">—</span>'}</div>
+        <div class="sec-t">${ic('hash', 14)} Funds by person <span class="count">hover a fund for details</span></div>
+        ${ppl.map(p => `<div class="cd-grp s-${p.m.status}">
+          <div class="cd-gh" data-act="member" data-id="${p.m.id}" title="Open ${esc(p.m.name)}"><span class="avatar" style="--av:${avColor(p.m.name)}">${esc(initials(p.m.name))}</span><span class="nm">${esc(p.m.name)}</span>${face(p.m.status, 18)}<span class="count">${plural(p.funds.length, 'fund')}</span></div>
+          ${p.funds.length ? p.funds.map(f => `<div class="cf-row" data-tipfund="${esc(D.teamId)}|${esc(f.mid)}|${esc(f.id)}">
+            <div><span class="fid">${esc(f.fundId || '—')}</span></div>
+            <div>${fchip(f.frequency)}</div>
+            <div>${repChips(f)}${f.countries.length ? `<div class="cf-c">${ic('globe', 11)} ${esc(f.countries.join(', '))}</div>` : ''}</div>
+          </div>`).join('') : '<div class="cf-row"><span class="na">No funds added</span></div>'}
+        </div>`).join('')}
+        ${g.remarks.length ? `<div class="sec-t" style="margin-top:6px">${ic('msg', 14)} Remarks</div>${g.remarks.map(r => `<div class="note" style="margin-bottom:6px"><b>${esc(r.who)}:</b> ${esc(r.text)}</div>`).join('')}` : ''}
+      </div>`;
+    return;
+  }
   if (D.mode === 'view') {
     const f = findMember(data, D.id); if (!f) { closeDrawer(true); return; }
     const m = f.m, tm = teamMeta(f.t.id);
@@ -1138,6 +1248,18 @@ function repRows(f = ui.rep) {
   });
   return rows;
 }
+function clientSummary(rows) {
+  const map = new Map();
+  rows.filter(r => r.client).forEach(r => {
+    const k = r.teamId + '|' + ckey(r.client);
+    if (!map.has(k)) map.set(k, { team: r.team, teamId: r.teamId, client: r.client, funds: 0, people: new Set(), countries: new Set(), reports: new Set(), classes: 0 });
+    const g = map.get(k);
+    if (r.fundId || r.reports.length) g.funds++;
+    g.people.add(r.member); r.countries.forEach(c => g.countries.add(c)); r.reports.forEach(x => g.reports.add(x));
+    if (r.reports.some(isVRR)) g.classes += (+r.classes || 0);
+  });
+  return [...map.values()].sort((a, b) => a.team.localeCompare(b.team) || b.funds - a.funds);
+}
 function memberSummary(f = ui.rep) {
   const types = data.reportTypes; const out = [];
   CONFIG.teams.filter(t => f.team === 'all' || t.id === f.team).forEach(tm => {
@@ -1165,7 +1287,7 @@ function renderRepTools() {
   const r = ui.rep;
   const members = CONFIG.teams.filter(t => r.team === 'all' || t.id === r.team).flatMap(t => team(data, t.id).members.map(m => ({ id: m.id, name: m.name, t: t.name })));
   $('#repTool').innerHTML = `
-    <div class="seg"><button class="${r.tab === 'detail' ? 'on' : ''}" data-act="rep-tab" data-v="detail">Detailed</button><button class="${r.tab === 'member' ? 'on' : ''}" data-act="rep-tab" data-v="member">By member</button></div>
+    <div class="seg"><button class="${r.tab === 'detail' ? 'on' : ''}" data-act="rep-tab" data-v="detail">Detailed</button><button class="${r.tab === 'member' ? 'on' : ''}" data-act="rep-tab" data-v="member">By member</button><button class="${r.tab === 'client' ? 'on' : ''}" data-act="rep-tab" data-v="client">By client</button></div>
     <select data-rf="team"><option value="all">Both teams</option>${CONFIG.teams.map(t => `<option value="${t.id}" ${r.team === t.id ? 'selected' : ''}>${esc(t.name)}</option>`).join('')}</select>
     <select data-rf="member"><option value="">All members</option>${members.map(m => `<option value="${m.id}" ${r.member === m.id ? 'selected' : ''}>${esc(m.name)}${r.team === 'all' ? ' · ' + esc(m.t) : ''}</option>`).join('')}</select>
     <select data-rf="type"><option value="">All report types</option>${data.reportTypes.map(t => `<option ${r.type === t ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select>
@@ -1179,7 +1301,7 @@ function renderRepTools() {
 function renderRepTable() {
   const r = ui.rep, rows = repRows(), ms = memberSummary();
   const nMem = new Set(rows.map(x => x.mid)).size;
-  const nCli = new Set(rows.filter(x => x.client).map(x => x.mid + '|' + x.client)).size;
+  const nCli = new Set(rows.filter(x => x.client).map(x => x.teamId + '|' + ckey(x.client))).size;
   const nFund = rows.filter(x => x.fundId || x.reports.length).length;
   $('#repKpis').innerHTML = `<div class="rk g"><div class="n">${nMem}</div><div class="l">Members</div></div><div class="rk"><div class="n">${nCli}</div><div class="l">Clients</div></div><div class="rk"><div class="n">${nFund}</div><div class="l">Funds</div></div><div class="rk"><div class="n">${new Set(rows.flatMap(x => x.countries)).size}</div><div class="l">Countries</div></div><div class="rk"><div class="n">${rows.reduce((a, x) => a + (x.reports.some(isVRR) ? (+x.classes || 0) : 0), 0)}</div><div class="l">VRR classes</div></div>` +
     data.reportTypes.map(t => `<div class="rk"><div class="n">${rows.filter(x => x.reports.includes(t)).length}</div><div class="l">${esc(t)}</div></div>`).join('');
@@ -1200,6 +1322,12 @@ function renderRepTable() {
         <td>${x.reports.length ? repChips(x) : '<span class="na">—</span>'}</td>
         <td style="white-space:pre-wrap;max-width:280px">${esc(x.remarks) || '<span class="na">—</span>'}</td></tr>`; }).join('')}
       </tbody></table>`;
+  } else if (r.tab === 'client') {
+    const cs = clientSummary(rows);
+    if (!cs.length) { $('#repTable').innerHTML = `<div class="rep-empty">No clients match these filters.</div>`; return; }
+    $('#repTable').innerHTML = `<table class="rt"><thead><tr><th>Team</th><th>Client</th><th style="text-align:right">Funds</th><th>Handled by</th><th>Countries</th><th>Report types</th><th style="text-align:right">VRR classes</th></tr></thead><tbody>
+      ${cs.map(x => `<tr><td>${tp(x.teamId, x.team)}</td><td><span class="mem">${esc(x.client)}</span></td><td class="num">${x.funds}</td><td style="font-size:12.5px">${esc([...x.people].join(', '))}</td><td>${ctry([...x.countries])}</td><td>${x.reports.size ? `<div class="rchips">${[...x.reports].map(rchip).join('')}</div>` : '<span class="na">—</span>'}</td><td class="num ${x.classes ? '' : 'c0'}">${x.classes}</td></tr>`).join('')}
+      </tbody></table>`;
   } else {
     const list = ms.filter(x => (!r.q || qm(x.member, r.q.toLowerCase())) && (!r.type || x.per[r.type] > 0) && (!r.country || x.countries.includes(r.country)));
     if (!list.length) { $('#repTable').innerHTML = `<div class="rep-empty">No members match these filters.</div>`; return; }
@@ -1210,6 +1338,29 @@ function renderRepTable() {
       </tbody></table>`;
   }
 }
+async function downloadClientList(teamId) {
+  const tm = teamMeta(teamId), list = clientIndex(teamId);
+  if (!list.length) { toast('No clients to download yet', true); return; }
+  const summary = [['Client', 'Funds', 'People', 'Handled By', 'Countries', 'Report Types', 'VRR Classes'],
+    ...list.map(g => [g.name, g.funds.length, g.members.size, [...g.members.values()].map(p => `${p.m.name} (${p.funds.length})`).join(', '), g.countries.join(', '),
+      g.reports.map(r => `${r} (${g.funds.filter(f => f.reports.includes(r)).length})`).join(', '), g.funds.reduce((a, f) => a + (hasVRR(f) ? (+f.classes || 0) : 0), 0)])];
+  const funds = [['Client', 'Fund ID', 'Handled By', 'Frequency', 'Countries', 'Report Types', 'VRR Classes'],
+    ...list.flatMap(g => g.funds.map(f => [g.name, f.fundId, f.member, f.frequency, f.countries.join(', '), f.reports.join(', '), hasVRR(f) && f.classes !== '' ? +f.classes : '']))];
+  const fname = `${CONFIG.company}-${tm.name.replace(/\W+/g, '')}-Client-List-${new Date().toISOString().slice(0, 10)}`;
+  try {
+    if (!window.XLSX) { toast('Preparing Excel…'); await loadScript('https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js'); }
+    const X = window.XLSX, wb = X.utils.book_new();
+    const add = (aoa, name, widths) => { const ws = X.utils.aoa_to_sheet(aoa); ws['!cols'] = widths.map(w => ({ wch: w })); ws['!autofilter'] = { ref: ws['!ref'] }; X.utils.book_append_sheet(wb, ws, name); };
+    add(summary, 'Clients', [26, 8, 8, 50, 26, 50, 11]);
+    add(funds, 'Client Funds', [26, 14, 22, 11, 24, 40, 11]);
+    X.writeFile(wb, fname + '.xlsx'); toast('Client list downloaded');
+  } catch (e) {
+    const csv = funds.map(r => r.map(v => { let x = String(v ?? ''); if (/^[=+\-@\t\r]/.test(x)) x = "'" + x; return `"${x.replace(/"/g, '""')}"`; }).join(',')).join('\r\n');
+    const u = URL.createObjectURL(new Blob(['﻿' + csv], { type: 'text/csv' })), a = document.createElement('a');
+    a.href = u; a.download = fname + '.csv'; a.click(); setTimeout(() => URL.revokeObjectURL(u), 1000);
+    toast('Excel library unavailable — downloaded CSV instead');
+  }
+}
 function loadScript(src) { return new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
 async function downloadExcel() {
   const f = $('#repTable') ? ui.rep : { team: 'all', member: '', type: '', country: '', freq: '', q: '' };
@@ -1218,6 +1369,7 @@ async function downloadExcel() {
     ...rows.map(r => [r.team, r.member, STATUS[r.status].label, r.client, r.fundId, r.frequency, r.countries.join(', '), r.reports.join(', '), r.reports.some(isVRR) && r.classes !== '' ? +r.classes : '', r.remarks])];
   const byMember = [['Team', 'Member', 'Bandwidth', 'Clients', 'Funds', 'Countries', ...types, 'VRR Classes', 'Total Reports'],
     ...ms.map(m => [m.team, m.member, STATUS[m.status].label, m.clients, m.funds, m.countries.join(', '), ...types.map(t => m.per[t]), m.classes, m.total])];
+  const byClient = [['Team', 'Client', 'Funds', 'Handled By', 'Countries', 'Report Types', 'VRR Classes'], ...clientSummary(rows).map(x => [x.team, x.client, x.funds, [...x.people].join(', '), [...x.countries].join(', '), [...x.reports].join(', '), x.classes])];
   const byCountry = [['Country Serviced', 'Funds', 'VRR Classes', 'Members'], ...[...new Set(rows.flatMap(r => r.countries))].sort().map(c => { const rs = rows.filter(r => r.countries.includes(c)); return [c, rs.length, rs.reduce((a, r) => a + (r.reports.some(isVRR) ? (+r.classes || 0) : 0), 0), [...new Set(rs.map(r => r.member))].join(', ')]; })];
   const byType = [['Report Type', 'Funds', 'Members'], ...types.map(t => { const rs = rows.filter(r => r.reports.includes(t)); return [t, rs.length, [...new Set(rs.map(r => r.member))].join(', ')]; })];
   const fname = `${CONFIG.company}-WorkBoard-Report-${new Date().toISOString().slice(0, 10)}`;
@@ -1227,6 +1379,7 @@ async function downloadExcel() {
     const add = (aoa, name, widths) => { const ws = X.utils.aoa_to_sheet(aoa); ws['!cols'] = widths.map(w => ({ wch: w })); if (aoa.length > 1) ws['!autofilter'] = { ref: ws['!ref'] }; ws['!freeze'] = { xSplit: 0, ySplit: 1 }; X.utils.book_append_sheet(wb, ws, name); };
     add(detail, 'Detailed', [10, 22, 22, 26, 14, 11, 22, 40, 12, 40]);
     add(byMember, 'By Member', [10, 22, 22, 9, 9, 28, ...types.map(t => Math.max(10, t.length + 2)), 12, 13]);
+    add(byClient, 'By Client', [10, 26, 8, 40, 26, 40, 11]);
     add(byCountry, 'By Country', [20, 9, 12, 60]);
     add(byType, 'By Report Type', [22, 9, 60]);
     X.writeFile(wb, fname + '.xlsx');
@@ -1373,8 +1526,40 @@ function showTip(leaf) {
   tip.style.top = y + 'px';
 }
 function hideTip() { clearTimeout(tipTimer); $('#tip').classList.remove('show'); }
-document.addEventListener('mouseover', e => { const l = e.target.closest('.leaf:not(.empty)'); if (l) { clearTimeout(tipTimer); tipTimer = setTimeout(() => showTip(l), 120); } });
-document.addEventListener('mouseout', e => { const l = e.target.closest('.leaf'); if (l && !l.contains(e.relatedTarget)) hideTip(); });
+function placeTip(el, html) {
+  const tip = $('#tip'); tip.innerHTML = html;
+  const r = el.getBoundingClientRect(), w = 300;
+  let x = r.right + 10; if (x + w > innerWidth - 8) x = r.left - w - 10; if (x < 8) x = 8;
+  tip.style.left = x + 'px'; tip.style.top = '0px'; tip.classList.add('show');
+  const h = tip.offsetHeight; let y = r.top + r.height / 2 - h / 2; y = Math.max(8, Math.min(y, innerHeight - h - 8)); tip.style.top = y + 'px';
+}
+function showClientTip(card) {
+  const g = clientIndex(ui.page).find(x => x.key === card.dataset.key); if (!g) return;
+  const shown = g.funds.slice(0, 10);
+  placeTip(card, `<h4>${ic('building', 14)} ${esc(g.name)}</h4>
+    <div class="tl">${ic('globe', 12)} Countries</div><div class="tv">${esc(g.countries.join(', ') || '—')}</div>
+    <div class="tl">${ic('hash', 12)} Funds (${g.funds.length})</div>
+    ${shown.map(f => `<div class="tf"><span class="fid">${esc(f.fundId || '—')}</span><div><div class="ctry">${esc(f.member)}${f.countries.length ? ' · ' + esc(f.countries.join(', ')) : ''}</div></div></div>`).join('')}
+    ${g.funds.length > 10 ? `<div class="tv" style="color:#8798ba;margin-top:4px">+ ${g.funds.length - 10} more</div>` : ''}
+    <div class="th">Click to see all funds</div>`);
+}
+function showFundTip(row) {
+  const [tid, mid, fid] = row.dataset.tipfund.split('|');
+  const fm = findMember(data, mid); if (!fm) return;
+  let f = null, cname = ''; fm.m.clients.forEach(c => c.funds.forEach(x => { if (x.id === fid) { f = x; cname = c.name; } })); if (!f) return;
+  placeTip(row, `<h4>${ic('hash', 14)} Fund ${esc(f.fundId || '—')}</h4>
+    <div class="tl">${ic('building', 12)} Client</div><div class="tv">${esc(cname)}</div>
+    <div class="tl">${ic('users', 12)} Handled by</div><div class="tv">${esc(fm.m.name)} · ${STATUS[fm.m.status].short}</div>
+    <div class="tl">${ic('globe', 12)} Countries serviced</div><div class="tv">${esc(f.countries.join(', ') || '—')}</div>
+    <div class="tl">${ic('clock', 12)} Frequency</div><div class="tv">${esc(f.frequency || '—')}</div>
+    <div class="tl">${ic('tag', 12)} Reports</div>${repChips(f, true)}`);
+}
+document.addEventListener('mouseover', e => {
+  const l = e.target.closest('.leaf:not(.empty), .cc, .cf-row[data-tipfund]'); if (!l) return;
+  clearTimeout(tipTimer);
+  tipTimer = setTimeout(() => l.classList.contains('cc') ? showClientTip(l) : l.dataset.tipfund ? showFundTip(l) : showTip(l), 150);
+});
+document.addEventListener('mouseout', e => { const l = e.target.closest('.leaf, .cc, .cf-row'); if (l && !l.contains(e.relatedTarget)) hideTip(); });
 window.addEventListener('scroll', hideTip, true);
 
 /* ===================== ACTIONS ===================== */
@@ -1388,6 +1573,14 @@ document.addEventListener('click', async e => {
     case 'open-team': go(a.dataset.team); break;
     case 'toggle': e.stopPropagation(); ui.expanded.has(id) ? ui.expanded.delete(id) : ui.expanded.add(id); render(); break;
     case 'member': openDrawer(id, 'view'); break;
+    case 'client-dl': downloadClientList(ui.page); break;
+    case 'tview': ui.tview = a.dataset.v; ui.q = ''; render(); break;
+    case 'client-view': {
+      hideTip();
+      ui.drawer = { mode: 'client', teamId: ui.page, key: a.dataset.key };
+      renderDrawer(); $('#drawer').classList.add('show'); $('#scrim').classList.add('show'); $('#drawer').setAttribute('aria-hidden', 'false');
+      break;
+    }
     case 'edit': e.stopPropagation(); openDrawer(id, 'edit'); break;
     case 'client': hideTip(); openDrawer(id, 'view', a.dataset.cid); break;
     case 'status': {
